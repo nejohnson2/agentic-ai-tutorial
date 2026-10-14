@@ -1,8 +1,9 @@
 # Basic Agent Tutorial
 
-Two Jupyter notebooks for learning how LLM agents work, running entirely locally. No API keys, no cost.
+Three Jupyter notebooks for learning how LLM agents work, running entirely locally. No API keys, no cost.
 
 - `agent_tutorial.ipynb` — build an agent from scratch on a local model through [Ollama](https://ollama.com)
+- `agent_pydantic_ai.ipynb` — the same agent rebuilt with the Pydantic AI framework: typed outputs, dependencies, memory
 - `tokens_tutorial.ipynb` — what tokens are, a BPE tokenizer built from scratch, and demos for a 15-minute lecture
 
 ## Agent tutorial
@@ -48,6 +49,20 @@ dependent tool calls, and small models struggle there. Observed on this machine 
 
 Change `MODEL` in the setup cell to experiment.
 
+## Pydantic AI tutorial
+
+Rebuilds the hand-written agent with [Pydantic AI](https://ai.pydantic.dev), pointing out what the
+framework does at each step: the loop runs inside `agent.run`, tools are `@agent.tool` decorators,
+final answers are validated Pydantic models (`output_type=`), shared state is injected via `deps_type`,
+and memory is `message_history=`. Ends with the same multi-step expenses task returning a typed result.
+
+Pydantic AI reaches Ollama through its OpenAI-compatible endpoint; the notebook sets `OLLAMA_BASE_URL`
+itself. Uses `await` at the top level of cells, which Jupyter supports natively.
+
+```bash
+jupyter lab agent_pydantic_ai.ipynb
+```
+
 ## Tokens tutorial
 
 Uses `tiktoken` (the GPT-4o tokenizer, 200k vocabulary) for the real-tokenizer demos, plus a
@@ -60,7 +75,8 @@ jupyter lab tokens_tutorial.ipynb
 
 ## Files
 
-- `agent_tutorial.ipynb` — the agent tutorial
+- `agent_tutorial.ipynb` — the agent tutorial, by hand
+- `agent_pydantic_ai.ipynb` — the agent tutorial, with Pydantic AI
 - `tokens_tutorial.ipynb` — the tokens tutorial and lecture demos
 - `workspace/` — scratch directory used by the agent's file tools
 - `requirements.txt` — pinned dependencies

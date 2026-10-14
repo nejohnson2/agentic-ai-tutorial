@@ -1,11 +1,12 @@
 # STATUS
 
-**Last updated:** 2026-09-17
+**Last updated:** 2026-10-13
 
 ## Current state
-Complete and verified. Both notebooks execute cleanly; `agent_tutorial.ipynb` runs top to bottom against local Ollama (gemma4:26b) with no errors; outputs are saved in the notebook.
+Complete and verified. All three notebooks execute cleanly; `agent_tutorial.ipynb` runs top to bottom against local Ollama (gemma4:26b) with no errors; outputs are saved in the notebook.
 
 ## Completed
+- `agent_pydantic_ai.ipynb`: same agent rebuilt with Pydantic AI 2.56 on Ollama (`ollama:gemma4:26b`): tools, transcript inspection, structured output, deps injection, multi-step task with typed result, memory, usage. Executes cleanly.
 - `tokens_tutorial.ipynb`: colored token visualizer (tiktoken o200k_base), case/space/number/language/emoji demos, from-scratch BPE trainer, strawberry problem, cost/context, 15-min talk plan. Executes cleanly.
 - Seven-section tutorial notebook: single call, memory, tools, manual round-trip, agent loop, multi-step file task, next steps
 - README with setup, model comparison table; pinned requirements.txt; .gitignore
